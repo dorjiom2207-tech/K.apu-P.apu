@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Birthday EXP Lane Surprise 🎂</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff0f5;
+    color: #2d1b3a;
+    text-align: center;
+  }
+
+  #loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    z-index: 999;
+  }
+
+  #loadingScreen img {
+    width: 220px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+
+  #mainContent {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .messageBox {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 20px auto;
+  }
+
+  .btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #8d67d4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .exp-silhouette {
+    width: 150px;
+    display: block;
+    margin: 10px auto;
+  }
+
+  .person-silhouette {
+    width: 180px;
+    display: block;
+    margin: 15px auto;
+    opacity: 0.9;
+  }
+
+  @keyframes fall {
+    from { transform: translateY(0); }
+    to { transform: translateY(120vh); opacity: 0; }
+  }
+
+  @keyframes flyUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120vh); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loadingScreen">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Human_silhouette_icon.svg" alt="Loading Silhouette" />
+  <p>Loading EXP Lane for Birthday Battle... 🎂🎉</p>
+</div>
+
+<audio id="bgm" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/14/audio_4d25e74c63.mp3" type="audio/mpeg">
+</audio>
+
+<div id="mainContent">
+  <h1>Birthday EXP Lane Surprise 🎂💜</h1>
+  <h2 style="color:#8d67d4; font-weight:600; margin-top:10px;">Lapu-Lapu Main Detected ⚔️🔥</h2>
+
+  <div class="messageBox">
+    <p>Happy Birthday EXP Laner! 🎉🥳</p>
+    <p>Your rotations are clean, your skills are sharp, and your vibes are unbeatable 😭😂</p>
+    <p>Hope your day is full of epic plays, big crits, and even bigger cake slices! 🍰</p>
+    <p>Also yes, this is a whole website just to annoy and celebrate you slightly.</p>
+  </div>
+
+  <button class="btn" onclick="showGift()">Open Birthday Gift 🎁</button>
+
+  <div id="giftBox" class="messageBox" style="display:none;">
+    <p>🎉 Birthday Surprise! 🎉</p>
+    <p>I wanted to give you something cool but all I had was… this website 😭</p>
+    <p>But hey, at least it doesn’t say "Defeat"… just epic birthday vibes. 🥳✨</p>
+    <p>You’re officially granted a dual-blade birthday buff! ⚔️💜</p>
+    <img src="https://i.ibb.co/fCQ0JwS/mobile-legends-splash.jpg" style="width:100%; border-radius:10px; margin-top:10px;" />
+  </div>
+
+  <div class="messageBox" style="margin-top:20px; background:#f5ecff;">
+    <p style="font-size:0.95rem;">BTW — I <b>couldn’t put Lapu-Lapu’s picture</b> because of copyright 🥲<br>
+    But imagine a heroic dual-blade warrior striking a birthday pose just for you 😭⚔️</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Human_silhouette_icon.svg" class="person-silhouette" alt="person silhouette" />
+  </div>
+
+  <!-- EXP lane silhouettes -->
+  <img src="https://i.ibb.co/8KXzQ6T/explane-sil.png" class="exp-silhouette">
+
+  <!-- Secret EXP Buff -->
+  <button id="secretBtn" class="btn" onclick="showSecret()">Secret Birthday EXP Buff ⭐</button>
+</div>
+
+<script>
+  const loadingScreen = document.getElementById('loadingScreen');
+  const mainContent = document.getElementById('mainContent');
+  const bgm = document.getElementById('bgm');
+
+  window.onload = () => {
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+      bgm.volume = 0.4;
+      bgm.play();
+    }, 2500);
+  }
+
+  function showGift() {
+    document.getElementById('giftBox').style.display = 'block';
+    confetti();
+    releaseButterflies();
+  }
+
+  function confetti() {
+    const duration = 1500;
+    const end = Date.now() + duration;
+    (function frame() {
+      const emojis = ["🦋", "✨", "💜", "🎉", "⭐", "⚔️", "🛡️", "🍰", "🎂"];
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+      const div = document.createElement('div');
+      div.innerHTML = emoji;
+      div.style.position = 'fixed';
+      div.style.left = Math.random() * window.innerWidth + 'px';
+      div.style.top = '-20px';
+      div.style.fontSize = '24px';
+      div.style.animation = 'fall 1.5s linear';
+      document.body.appendChild(div);
+      setTimeout(() => div.remove(), 1600);
+      if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+  }
+
+  function releaseButterflies() {
+    for (let i = 0; i < 15; i++) {
+      const b = document.createElement('div');
+      b.textContent = '🦋';
+      b.style.position = 'fixed';
+      b.style.left = Math.random() * window.innerWidth + 'px';
+      b.style.bottom = '-20px';
+      b.style.fontSize = (Math.random()*20+20) + 'px';
+      b.style.animation = `flyUp ${5 + Math.random() * 5}s linear`; 
+      document.body.appendChild(b);
+      setTimeout(() => b.remove(), 9000);
+    }
+  }
+
+  function showSecret() {
+    alert("✨ Birthday EXP Lane Bonus! +1000 Cuteness +2000 Savage Energy 💥\nKeep slaying lanes and eating cake, king.");
+  }
+</script>
+</body>
+</html>
